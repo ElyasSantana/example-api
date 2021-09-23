@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+router_helloworld = APIRouter()
 
 
-@router.get("/")
+@router_helloworld.get("/")
 def get_helloworld():
     return {"Hello": "World"}

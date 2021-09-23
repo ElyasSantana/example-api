@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 
-from helloworld.api.v1 import router as api_helloworld
+from helloworld.api.v1 import router_helloworld
+from company.api.v1 import router_company
 
 
 def get_application():
@@ -17,7 +18,8 @@ def get_application():
         allow_headers=["*"],
     )
 
-    _app.include_router(api_helloworld)
+    _app.include_router(router_helloworld)
+    _app.include_router(router_company)
 
     return _app
 
