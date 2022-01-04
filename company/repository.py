@@ -1,15 +1,16 @@
 from app.database import SessionLocal
 
-import schemas
-import models
+from company import schemas
+from company import models
 
 
 def create_company(db: SessionLocal, company: schemas.Company):
     db_company = models.Company(
-        name=company.name,
-        description=company.description,
-        image=company.image,
-        role=company.role,
+        cnpj=company.cnpj,
+        razao_social=company.razao_social,
+        endereco=company.endereco,
+        email=company.email,
+        telefone=company.telefone,
     )
     db.add(db_company)
     db.commit()

@@ -5,7 +5,7 @@ from pydantic import BaseModel, validator
 
 
 class Company(BaseModel):
-    id: Union[str, int, UUID]
+    # id: int
     cnpj: str
     nome: str
     razao_social: str
