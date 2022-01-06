@@ -1,7 +1,8 @@
 from __future__ import with_statement
-import os
+from os import environ
 
 from app.database import Base
+from app.core.config import settings
 from company.models import Company
 from logging.config import fileConfig
 
@@ -12,10 +13,10 @@ from alembic import context
 
 
 def get_url():
-    user = os.getenv("POSTGRES_USER", "postgres")
-    password = os.getenv("POSTGRES_PASSWORD", "")
-    server = os.getenv("POSTGRES_SERVER", "db")
-    db = os.getenv("POSTGRES_DB", "app")
+    user = environ.get("POSTGRES_USER", settings.POSTGRES_USER)
+    password = environ.get("POSTGRED_PASSWORD", settings.POSTGRES_PASSWORD)
+    server = environ.get("POSTGRES_SERVER", "localhost")
+    db = environ.get("POSTGRES_DB", settings.POSTGRES_DB)
     print(f"AQUI {server} : {password} : {db}")
     return f"postgresql://{user}:{password}@{server}/{db}"
 
